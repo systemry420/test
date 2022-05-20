@@ -1,4 +1,4 @@
-<div class="p-3 grid grid-rows-3 grid-flow-col gap-4">
+<div class="p-4 grid grid-rows-3 grid-flow-col gap-2">
   <div class="row-span-3 border-r p-2">
     <ul class="list-none">
       <li class="py-2 my-2">
@@ -9,12 +9,12 @@
       </li>
     </ul>
   </div>
-  <div class="col-span-2 p-2">
+  <div class="row-span-1 col-span-2">
     <h1 class="text-3xl" [ngStyle]="{'color': color}">
       Welcome to dashboard
     </h1>
-  </div>
-  <div class="p-2 row-span-2 col-span-2">
-    <router-outlet></router-outlet>
+    <div class="p-4">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

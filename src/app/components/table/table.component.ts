@@ -1,4 +1,7 @@
+import { DataService } from './../../service/data.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-table',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  users$: Observable<User[]>;
+
+  constructor(
+    private service: DataService
+  ) {
+    this.users$ = new Observable<User[]>()
+   }
 
   ngOnInit(): void {
+    this.users$ = this.service.getData()
   }
 
 }

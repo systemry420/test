@@ -1,1 +1,18 @@
-<p>table works!</p>
+<div class="flex justify-center rounded-xl py-8 bg-slate-100">
+    <table class="w-100 rounded" *ngIf="(users$ | async) as users">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Username</th>
+        </tr>
+        <tr class="p-2 border bg-white" *ngFor="let user of users">
+            <td class="p-2">{{user.id}}</td>
+            <td class="p-2">{{user.name}}</td>
+            <td class="p-2">{{user.phone}}</td>
+            <td class="p-2">{{user.email}}</td>
+            <td class="p-2">{{user.username}}</td>
+        </tr>
+    </table>    
+</div>
