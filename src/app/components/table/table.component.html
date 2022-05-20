@@ -1,11 +1,11 @@
 <div class="flex justify-center rounded-xl py-8 bg-slate-100">
-    <table class="w-100 rounded" *ngIf="(users$ | async) as users">
+    <table class="w-100 rounded" *ngIf="users.length != 0">
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Username</th>
+            <th class="cursor-pointer" (click)="sort('id')">Id</th>
+            <th class="cursor-pointer" (click)="sort('name')">Name</th>
+            <th class="cursor-pointer" (click)="sort('phone')">Phone</th>
+            <th class="cursor-pointer" (click)="sort('email')">Email</th>
+            <th class="cursor-pointer" (click)="sort('username')">Username</th>
         </tr>
         <tr class="p-2 border bg-white" *ngFor="let user of users">
             <td class="p-2">{{user.id}}</td>

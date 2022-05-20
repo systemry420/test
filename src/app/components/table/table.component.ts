@@ -1,7 +1,8 @@
 import { DataService } from './../../service/data.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map, tap, BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import * as _ from 'underscore'
 
 @Component({
   selector: 'app-table',
@@ -10,16 +11,21 @@ import { User } from 'src/app/models/user.model';
 })
 export class TableComponent implements OnInit {
 
-  users$: Observable<User[]>;
+  users: User[] = []
 
   constructor(
     private service: DataService
-  ) {
-    this.users$ = new Observable<User[]>()
-   }
+  ) { }
 
   ngOnInit(): void {
-    this.users$ = this.service.getData()
+    this.service.getData()
+      .subscribe(users => {
+        this.users = users
+      })
+  }
+
+  sort(key: string) {
+    this.users = _.sortBy(this.users, key)
   }
 
 }
